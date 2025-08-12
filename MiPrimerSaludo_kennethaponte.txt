@@ -1,0 +1,25 @@
+import java.util.*;
+
+// Este programa imprime un saludo personalizado
+public class MiPrimerSaludo {
+    public static void main(String[] args) {
+      System.out.println("-------------------------CARITA---------------------------");
+        System.out.println(" @@@@@@@");
+        System.out.println("@| O O |@");
+        System.out.println("(|  ^  |)");
+        System.out.println(" | [_] |");
+        System.out.println(" +-----+");
+        System.out.println(" ------------------------DIAMANTE-------------------------");
+        System.out.println("   *");
+        System.out.println("  ***");
+        System.out.println(" *****");
+        System.out.println("*******");
+        System.out.println(" *****");
+        System.out.println("  ***");
+        System.out.println("  ***");
+        System.out.println("   *");
+        System.out.println("---------------------EJERCICIO PALABRAS--------------------");
+        import java.util.Scanner;
+        
+    }
+}
