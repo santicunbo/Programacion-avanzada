@@ -1,0 +1,119 @@
+
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class App {
+    public static void main(String[] args) throws Exception {
+
+        Scanner scanner = new Scanner(System.in);
+        ArrayList<tarea> listaTareas = new ArrayList<>();
+        boolean continuar = true;
+
+        while (continuar) {
+            System.out.println("\n--- GESTIÓN DE TAREAS ---");
+            System.out.println("1. Añadir una nueva tarea");
+            System.out.println("2. Marcar tarea como completada");
+            System.out.println("3. Mostrar todas las tareas");
+            System.out.println("4. Salir");
+            System.out.print("Seleccione una opción: ");
+            int opcion = scanner.nextInt();
+            scanner.nextLine();
+
+            if (opcion == 1) {
+                System.out.print("Ingrese el nombre o titulo de la tarea: ");
+                String nombre = scanner.nextLine();
+                System.out.print("Ingrese la descripción de la tarea: ");
+                String descripcion = scanner.nextLine();
+                tarea nuevaTarea = new tarea(nombre, descripcion);
+                listaTareas.add(nuevaTarea);
+                System.out.println("Tarea añadida correctamente.");
+
+            } else if (opcion == 2) {
+                if (listaTareas.isEmpty()) {
+                    System.out.println("No hay tareas para marcar.");
+                    continue;
+                }
+                System.out.print("Ingrese el número de la tarea a marcar como completada: ");
+                int numero = scanner.nextInt();
+                scanner.nextLine();
+                if (numero >= 1 && numero <= listaTareas.size()) {
+                    listaTareas.get(numero - 1).marcarCompletada();
+                    System.out.println("Tarea marcada como completada.");
+                } else {
+                    System.out.println("Número de tarea inválido.");
+                }
+
+            } else if (opcion == 3) {
+                if (listaTareas.isEmpty()) {
+                    System.out.println("No hay tareas en la lista.");
+                } else {
+                    System.out.println("\nLista de tareas:");
+                    for (int i = 0; i < listaTareas.size(); i++) {
+                        System.out.println((i + 1) + ". " + listaTareas.get(i));
+                    }
+                }
+
+            } else if (opcion == 4) {
+                continuar = false;
+                System.out.println("Saliendo del programa...");
+
+            } else {
+                System.out.println("Opción no válida. Intente de nuevo.");
+            }
+        }
+
+        scanner.close();
+    }
+}
+
+
+
+ 
+public class tarea {
+    private String nombre;
+    private String descripcion;
+    private String estado;
+
+
+
+    public tarea(String nombre, String descripcion) {
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.estado = "Pendiente";
+    }
+
+    public void marcarCompletada() {
+        this.estado = "Completada";
+    }
+
+    public String getNombre(){
+        return nombre;
+    }
+
+        public String setNombre(){
+        return nombre;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public String setDescripcion() {
+        return descripcion;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public String setEstado() {
+        return estado;
+    }
+
+    @Override
+    public String toString() {
+        return nombre + "\n" + "   " + descripcion + "\n" + "  [" + estado + "]";
+
+    }
+}
